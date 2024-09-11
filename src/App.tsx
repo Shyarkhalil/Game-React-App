@@ -5,11 +5,12 @@ import ListGroup from './components/ListGroup';
 function App() {
   const items = ['New York', 'Tokyo', 'Paris', 'Sydney', 'Cairo', 'Toronto'];
   const cities = 'Cities';
-  const text = 'Alert';
   return (
     <div>
       <ListGroup items={items} heading={cities} />
-      <Alert text={text} />
+      <Alert>
+        <span>Alert</span>
+      </Alert>
     </div>
   );
 }
