@@ -1,8 +1,7 @@
 import { nanoid } from 'nanoid';
-import React from 'react';
 function ListGroup() {
   const items = ['New York', 'Tokyo', 'Paris', 'Sydney', 'Cairo', 'Toronto'];
-  type listItemClickEvent = React.MouseEvent<HTMLLIElement>;
+
   return (
     <>
       <h1>List</h1>
