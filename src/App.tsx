@@ -1,6 +1,8 @@
+import { useState } from 'react';
 import './App.css';
 import Alert from './components/Alert';
 import ButtonList from './components/ButtonList';
+import Dismissing from './components/Dismissing';
 import ListGroup from './components/ListGroup';
 const items = ['New York', 'Tokyo', 'Paris', 'Sydney', 'Cairo', 'Toronto'];
 const cities = 'Cities';
@@ -15,8 +17,13 @@ const buttons = [
   { className: 'btn btn-dark', name: 'Dark' },
 ];
 function App() {
+  const [alertVisible, setAlertVisibility] = useState(false);
   const handleButtonClick = (buttonName: string) => {
     console.log(`${buttonName} button clicked`);
+    setAlertVisibility((prevVisibilityState) => !prevVisibilityState);
+  };
+  const handelAlertClose = () => {
+    setAlertVisibility((prevVisibilityState) => !prevVisibilityState);
   };
   return (
     <>
@@ -24,6 +31,7 @@ function App() {
       <Alert>
         Hello <span>World</span>
       </Alert>
+      {alertVisible && <Dismissing onClose={handelAlertClose} />}
       <ButtonList buttons={buttons} onClick={handleButtonClick} />
     </>
   );
