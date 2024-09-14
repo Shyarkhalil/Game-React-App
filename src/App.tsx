@@ -4,6 +4,7 @@ import './App.css';
 import Alert from './components/Alert';
 import ButtonList from './components/ButtonList';
 import Dismissing from './components/Dismissing';
+import GamPlayer from './components/GamPlayer';
 import Like from './components/Like';
 import ListGroup from './components/ListGroup';
 const items = ['New York', 'Tokyo', 'Paris', 'Sydney', 'Cairo', 'Toronto'];
@@ -33,6 +34,22 @@ function App() {
     setLiked((prevState) => !prevState);
     console.log(liked);
   };
+  const [game, setGame] = useState({
+    id: 1,
+    player: {
+      name: 'John',
+      score: 200,
+    },
+  });
+  const handlePlayerNameUpdate = () => {
+    setGame((prevGame) => ({
+      ...prevGame,
+      player: {
+        ...prevGame.player,
+        name: 'Jane',
+      },
+    }));
+  };
   return (
     <>
       <ListGroup items={items} heading={cities} />
@@ -43,6 +60,7 @@ function App() {
       <ButtonList buttons={buttons} onClick={handleButtonClick} />
       <AiFillFire color="red" size="70" />
       <Like onLikeHandeler={onLikeHandeler} isLiked={liked} />
+      <GamPlayer game={game} onPlayerNameUpdate={handlePlayerNameUpdate} />
     </>
   );
 }
