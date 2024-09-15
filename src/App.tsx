@@ -21,6 +21,14 @@ const buttons = [
 ];
 function App() {
   const [alertVisible, setAlertVisibility] = useState(false);
+  const [liked, setLiked] = useState(true);
+  const [game, setGame] = useState({
+    id: 1,
+    player: {
+      name: 'John',
+      score: 200,
+    },
+  });
   const handleButtonClick = (buttonName: string) => {
     console.log(`${buttonName} button clicked`);
     setAlertVisibility((prevVisibilityState) => !prevVisibilityState);
@@ -29,18 +37,10 @@ function App() {
     setAlertVisibility((prevVisibilityState) => !prevVisibilityState);
   };
 
-  const [liked, setLiked] = useState(true);
   const onLikeHandeler = () => {
     setLiked((prevState) => !prevState);
     console.log(liked);
   };
-  const [game, setGame] = useState({
-    id: 1,
-    player: {
-      name: 'John',
-      score: 200,
-    },
-  });
   const handlePlayerNameUpdate = () => {
     setGame((prevGame) => ({
       ...prevGame,
